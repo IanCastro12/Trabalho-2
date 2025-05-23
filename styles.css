@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    max-width: 1080px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+header{
+    background-color: black;
+    width: 100%;
+    padding: 20px;
+}
+.logo{
+    width: 30%;
+}
+.menu{
+    width: 100%;
+    cursor: pointer;
+}
+.menu nav a{
+    padding-right: 90px;
+    color: white;
+    font-size: 25px;
+}
+.logo img{
+    width: 8rem;
+}
+.redes img{
+    width: 8rem;
+}
+.trailer img{
+    width: 20rem;
+}
+.trailer a{
+    margin: 18px;
+}
+main{
+    background-color: black;
+}
+.buscar{
+    border: 1px solid white;
+    border-radius: 5rem;
+    color: white;
+    padding: 5px;
+    margin: 9px;
+}
+.pesquisar{
+    display: flex;
+    font-size: 18px;
+}
+.filtrar{
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    margin: 9px;
+}
+.imagem img{
+    width: 19rem;
+}
+.cartao{
+    width: 25rem;
+    /* border: 1px solid #fa1200; */
+    height: 23rem;
+    /* box-shadow: .5rem .5rem .3rem .01rem #c7c5c5; */
+    margin: 3rem;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+}
+.descricao{
+    color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 30px;
+    padding-bottom: 30px;
+}
+.titulo{
+    padding: 5px;
+    font-size: 30px;
+}
+.brevedescricao{
+    font-size: 15px;
+}
+.footer {
+    grid-area: footer;
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 177px;
+}
+.filmes{
+    display: flex;
+}
