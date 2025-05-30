@@ -98,3 +98,69 @@ main{
 .filmes{
     display: flex;
 }
+.carrossel-series {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: black;
+    padding: 40px 0;
+}
+
+.slider-container-series {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slide-series {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.slide-series img {
+    width: 80%;
+    border-radius: 10px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.slide-series .info-series {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 90%;
+}
+
+.seta-esquerda-series,
+.seta-direita-series {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    z-index: 2;
+}
+
+.seta-esquerda-series {
+    left: 5%;
+}
+
+.seta-direita-series {
+    right: 5%;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Série</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .conteudo {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .info {
+            flex: 1;
+        }
+
+        .info h1 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="conteudo">
+        <img id="poster" />
+        <div class="info">
+            <h1 id="titulo">Carregando...</h1>
+            <p id="descricao"></p>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = '4372ca995828207e4bb6001942ca8c00';
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        if (!id) {
+            document.getElementById('titulo').textContent = "ID não informado.";
+        } else {
+            async function carregarDetalhes() {
+                try {
+                    const res = await fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&language=pt-BR`);
+                    const serie = await res.json();
+
+                    document.getElementById('titulo').textContent = serie.name;
+                    document.getElementById('poster').src = `https://image.tmdb.org/t/p/w500${serie.poster_path}`;
+                    document.getElementById('descricao').textContent = serie.overview || "Sem descrição disponível.";
+                } catch (e) {
+                    document.getElementById('titulo').textContent = "Erro ao carregar detalhes da série.";
+                }
+            }
+
+            carregarDetalhes();
+        }
+    </script>
+</body>
+
+</html>
