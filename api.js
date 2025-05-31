@@ -69,4 +69,69 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     carregaCarrosselSeries();
+    async function carregaSeriesNovas() {
+        const container = document.querySelector('.container-novas-series');
+        if (!container) return;
+
+        try {
+            const resposta = await fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=4372ca995828207e4bb6001942ca8c00&language=pt-BR`);
+            const dados = await resposta.json();
+
+            dados.results.slice(0, 8).forEach(serie => {
+                const card = document.createElement('div');
+                card.classList.add('card-serie');
+
+                const imagem = serie.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${serie.poster_path}`
+                    : 'https://via.placeholder.com/250x370?text=Sem+Imagem';
+
+                const descricao = serie.overview && serie.overview.trim() !== ''
+                    ? serie.overview
+                    : 'Sem descrição disponível.';
+
+                card.innerHTML = `
+                    <img src="${imagem}" alt="${serie.name}">
+                    <div class="info">
+                        <h3>${serie.name}</h3>
+                        <p>${descricao.substring(0, 100)}...</p>
+                    </div>
+                `;
+
+                card.addEventListener("click", () => {
+                    window.location.href = `detalhes.html?id=${serie.id}`;
+                });
+
+                container.appendChild(card);
+            });
+        } catch (erro) {
+            console.error("Erro ao carregar séries novas:", erro);
+            container.innerHTML = `<p style="color:red;">Erro ao carregar séries novas.</p>`;
+        }
+    }
+
+    // Chama a função
+    carregaSeriesNovas();
+
 });
+fetch("http://localhost:3000/equipe")
+    .then(response => response.json())
+    .then(data => {
+        const container = document.getElementById("cards-equipe");
+
+        data.forEach(pessoa => {
+            const card = document.createElement("div");
+            card.classList.add("card-integrante");
+
+            card.innerHTML = `
+                <img src="${pessoa.imagem}" alt="${pessoa.nome}">
+                <h3>${pessoa.nome}</h3>
+                <p>${pessoa.curso}</p>
+                <a href="${pessoa.instagram}" target="_blank">Instagram</a>
+
+            `;
+
+            container.appendChild(card);
+        });
+    })
+    .catch(error => console.error("Erro ao carregar equipe:", error));
+

@@ -1,1 +1,11 @@
-{}
+{
+    "equipe": [
+      {
+        "nome": "Ian Castro",
+        "imagem": "https://via.placeholder.com/200",
+        "instagram": "https://www.instagram.com/iancastro___?igsh=bmVnaDU0ZXExbDg3&utm_source=qr",
+        "curso": "Analise e desenvolvimento de sistemas"
+      }
+    ]
+  }
+  
