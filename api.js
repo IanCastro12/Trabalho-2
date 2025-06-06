@@ -123,10 +123,13 @@ fetch("http://localhost:3000/equipe")
             card.classList.add("card-integrante");
 
             card.innerHTML = `
-                <img src="${pessoa.imagem}" alt="${pessoa.nome}">
+                <div class= "foto"> <img src="${pessoa.imagem}"> </div>
+                <div> 
                 <h3>${pessoa.nome}</h3>
                 <p>${pessoa.curso}</p>
+                <p>${pessoa.minibio}</p>
                 <a href="${pessoa.instagram}" target="_blank">Instagram</a>
+                </div> 
 
             `;
 

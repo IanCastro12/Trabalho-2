@@ -10,6 +10,8 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    flex-wrap: wrap;
+    /* Permite quebrar linha */
 }
 
 header {
@@ -20,29 +22,76 @@ header {
 
 .logo {
     width: 30%;
+    min-width: 150px;
+    /* Evita ficar muito pequeno */
 }
 
 .menu {
-    width: 100%;
+    width: 70%;
     cursor: pointer;
 }
 
 .menu nav a {
-    padding-right: 90px;
+    padding-right: 30px;
+    /* Ajustado para ficar melhor em telas menores */
     color: white;
     font-size: 25px;
+    white-space: nowrap;
+    /* Evita quebra indesejada */
 }
 
 .logo img {
     width: 8rem;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo,
+    .menu,
+    .redes {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0.5rem 0;
+    }
+
+    .menu nav a {
+        padding: 10px 15px;
+        font-size: 20px;
+        white-space: normal;
+        /* Permite quebrar linha */
+    }
+
+    .logo img,
+    .redes img {
+        width: 6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu nav a {
+        font-size: 16px;
+        padding: 8px 10px;
+    }
 }
 
 .redes img {
     width: 8rem;
+    max-width: 100%;
+    height: auto;
 }
 
 .trailer img {
     width: 20rem;
+    max-width: 100%;
+    height: auto;
 }
 
 .trailer a {
@@ -57,13 +106,16 @@ main {
     border: 1px solid white;
     border-radius: 5rem;
     color: white;
-    padding: 5px;
+    padding: 5px 10px;
     margin: 9px;
+    max-width: 100%;
 }
 
 .pesquisar {
     display: flex;
     font-size: 18px;
+    flex-wrap: wrap;
+    /* Para telas pequenas quebrar */
 }
 
 .filtrar {
@@ -75,14 +127,16 @@ main {
 
 .imagem img {
     width: 19rem;
+    max-width: 100%;
+    height: auto;
 }
 
 .cards {
-    width: 25rem;
-    /* border: 1px solid #fa1200; */
-    height: 23rem;
-    /* box-shadow: .5rem .5rem .3rem .01rem #c7c5c5; */
-    margin: 3rem;
+    width: 100%;
+    max-width: 25rem;
+    height: auto;
+    /* Ajusta altura automaticamente */
+    margin: 3rem auto;
     justify-items: center;
     align-items: center;
     cursor: pointer;
@@ -95,6 +149,7 @@ main {
     display: flex;
     font-size: 30px;
     padding-bottom: 30px;
+    text-align: center;
 }
 
 .titulo {
@@ -112,12 +167,15 @@ main {
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: 0; /* Ou um valor menor como 20px se quiser espaço */   
+    margin-top: 0;
 }
-
 
 .filmes {
     display: flex;
+    flex-wrap: wrap;
+    /* Quebra linhas em telas pequenas */
+    justify-content: center;
+    gap: 1rem;
 }
 
 .carrossel-series {
@@ -149,6 +207,7 @@ main {
 
 .slide-series img {
     width: 80%;
+    max-width: 100%;
     border-radius: 10px;
     max-height: 400px;
     object-fit: cover;
@@ -163,6 +222,7 @@ main {
     padding: 15px;
     border-radius: 10px;
     max-width: 90%;
+    word-wrap: break-word;
 }
 
 .seta-esquerda-series,
@@ -189,38 +249,36 @@ main {
 
 .novas-series {
     background-color: black;
-    padding: 2rem;
+    padding: 2rem 1rem;
+    width: 100%;
 }
 
 .titulo-novas-series {
     color: white;
     font-size: 2rem;
     margin-bottom: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
 }
 
 .container-novas-series {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
-
 
 .card-serie {
     background-color: #1c1c1c;
     border-radius: 10px;
     overflow: hidden;
     width: 250px;
-    flex-shrink: 0;
+    flex: 0 0 auto;
     color: white;
     cursor: pointer;
     transition: transform 0.3s;
 }
-
 
 .card-serie:hover {
     transform: scale(1.05);
@@ -246,59 +304,20 @@ main {
     color: #ccc;
 }
 
-.novas-series {
-    background-color: black;
-    padding: 2rem 1rem;
-    width: 100%;
-}
-
-.container-novas-series {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.card-serie {
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 250px;
-    flex: 0 0 auto; /* Impede encolhimento e mantém o tamanho */
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-.equipe-container {
-    background-color: black;
-    padding: 2rem 1rem;
-    width: 100%;
-    color: white;
-    text-align: center;
-}
-
-.titulo-equipe {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.cards-equipe {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-}
-
 .card-integrante {
     background-color: #1c1c1c;
     border-radius: 10px;
     overflow: hidden;
-    width: 200px;
+    width: 100%;
+    max-width: 1000px;
+    /* Limita a largura máxima */
     color: white;
     padding: 1rem;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
     transition: transform 0.3s;
 }
 
@@ -307,25 +326,43 @@ main {
 }
 
 .card-integrante img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: 160px;
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
-    margin-bottom: 1rem;
+    flex-shrink: 0;
 }
 
-.card-integrante h3 {
-    font-size: 1.1rem;
+.card-integrante h3,
+.card-integrante p,
+.card-integrante a {
     margin: 0.5rem 0;
-}
-
-.card-integrante p {
-    font-size: 0.9rem;
-    margin: 0.3rem 0;
+    flex: 1 1 300px;
+    /* Permite o texto ocupar espaço e quebrar linha */
+    word-break: break-word;
 }
 
 .card-integrante a {
-    color: #ccc;
-    font-size: 0.9rem;
+    color: #00BFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-integrante a:hover {
     text-decoration: underline;
+}
+
+/* Ajuste extra para mobile */
+@media (max-width: 600px) {
+    .card-integrante {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-integrante h3,
+    .card-integrante p,
+    .card-integrante a {
+        flex: unset;
+    }
 }

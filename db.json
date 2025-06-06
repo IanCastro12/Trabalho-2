@@ -2,9 +2,10 @@
     "equipe": [
       {
         "nome": "Ian Castro",
-        "imagem": "https://via.placeholder.com/200",
+        "imagem": "fototrabalho.jpeg",
         "instagram": "https://www.instagram.com/iancastro___?igsh=bmVnaDU0ZXExbDg3&utm_source=qr",
-        "curso": "Analise e desenvolvimento de sistemas"
+        "curso": "Analise e desenvolvimento de sistemas",
+        "minibio": "Sou um estudante da Puc Minas na unidade do barreiro"
       }
     ]
   }
