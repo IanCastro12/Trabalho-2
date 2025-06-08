@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Favoritos</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .favoritos {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .favoritos h1 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .remover {
+            margin-top: 1rem;
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remover:hover {
+            background-color: #e60000;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><img src="image.png" alt="Logo"></div>
+            <div class="menu">
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="index.html">Catálogo</a>
+                    <a href="favoritos.html">Favoritos</a>
+                    <a href="index.html">Novos</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="favoritos">
+        <h1>Meus Favoritos</h1>
+        <div class="grid" id="listaFavoritos">
+            <!-- Cards inseridos via JavaScript -->
+        </div>
+    </div>
+
+    <footer class="footer">
+        © 2025 — 2025 Cinema Films | Site desenvolvido por
+        <a href="https://www.instagram.com/iancastro___?igsh=bmVnaDU0ZXExbDg3&utm_source=qr">Ian Castro</a>
+    </footer>
+
+    <script>
+        const lista = document.getElementById('listaFavoritos');
+        let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+        function atualizarLista() {
+            lista.innerHTML = '';
+            if (favoritos.length === 0) {
+                lista.innerHTML = "<p>Você ainda não adicionou nenhuma série aos favoritos.</p>";
+                return;
+            }
+
+            favoritos.forEach((serie, index) => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+                    <a href="detalhes.html?id=${serie.id}">
+                        <img src="${serie.poster}" alt="${serie.nome}">
+                        <h3>${serie.nome}</h3>
+                    </a>
+                    <button class="remover" onclick="removerFavorito(${index})">Remover</button>
+                `;
+                lista.appendChild(card);
+            });
+        }
+
+        function removerFavorito(index) {
+            favoritos.splice(index, 1);
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            atualizarLista();
+        }
+
+        atualizarLista();
+    </script>
+</body>
+
+</html>

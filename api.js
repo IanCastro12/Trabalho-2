@@ -138,3 +138,22 @@ fetch("http://localhost:3000/equipe")
     })
     .catch(error => console.error("Erro ao carregar equipe:", error));
 
+document.getElementById('btnFavorito').addEventListener('click', () => {
+    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+    const serieFavorita = {
+        id: id,
+        nome: document.getElementById('titulo').textContent,
+        poster: document.getElementById('poster').src
+    };
+
+    const jaExiste = favoritos.some(item => item.id === id);
+
+    if (!jaExiste) {
+        favoritos.push(serieFavorita);
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+        alert('Série adicionada aos favoritos!');
+    } else {
+        alert('Essa série já está nos favoritos.');
+    }
+});
